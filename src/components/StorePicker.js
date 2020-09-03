@@ -3,22 +3,19 @@ import { getFunName } from "../helpers";
 
 class StorePicker extends React.Component {
   myInput = React.createRef();
-  /* handleClick() {
-    alert("Hey Button Clicked !!!");
-  } */
   gotoStore = (e) => {
     // 1. Stop the form from submitting
     e.preventDefault();
     // 2. get the text from that input
     const storeName = this.myInput.current.value;
+    /* console.log(`Going to Store`); */
     // 3. Change the page to /store/whatever-they-entered
-    console.log(`Going to Store`);
+    this.props.history.push(`/store/${storeName}`);
   };
   render() {
     return (
       <form className="store-selector" onSubmit={this.gotoStore}>
         <h2>Please Enter a store</h2>
-        {/* <button onClick={this.handleClick}>Click me !!!</button> */}
         {/* to reference input field we have "ref" */}
         <input
           type="text"
