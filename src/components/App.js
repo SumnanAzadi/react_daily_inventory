@@ -8,10 +8,10 @@ export class App extends Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
-          <Header /> {/*Header Components*/}
+          <Header tagline="Fresh Seafood Market" age={100} open={true} />
         </div>
-        <Inventory /> {/*Inventory Components*/}
-        <Order /> {/*Order Components*/}
+        <Inventory />
+        <Order />
       </div>
     );
   }
