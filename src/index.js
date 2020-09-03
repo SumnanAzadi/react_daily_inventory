@@ -1,8 +1,8 @@
-import React from "react"; //we want entire 'react' package
-import { render } from "react-dom"; //we want only need 'render' method 'react-dom' package
-
+import React from "react";
+import { render } from "react-dom";
+import "./css/style.css";
 //Components
 import StorePicker from "./components/StorePicker";
+import App from "./components/App";
 
-//render(<p>Hey Brother</p>, document.querySelector("#main")); //render simple tag
-render(<StorePicker />, document.querySelector("#main")); //render whole components
+render(<App />, document.querySelector("#main")); //render whole components
