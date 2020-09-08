@@ -57,6 +57,16 @@ class App extends React.Component {
     // 3. Call setState to update our state object
     this.setState({ order });
   };
+
+  updateFish = (key, updatedFish) => {
+    // 1. Take a copy of the current state
+    const fishes = { ...this.state.fishes };
+    // 2. Update that state
+    fishes[key] = updatedFish;
+    // 3. Set that to state
+    this.setState({ fishes });
+  };
+
   //if you need access to the key, you have to send the key with another props other than "key"
   render() {
     return (
@@ -78,6 +88,8 @@ class App extends React.Component {
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
+          updateFish={this.updateFish}
+          fishes={this.state.fishes}
         />
       </div>
     );
