@@ -4,12 +4,24 @@ import Order from "./Order";
 import Inventory from "./Inventory";
 import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
+//Firebase
+import base from "../base";
 
 class App extends React.Component {
   state = {
     fishes: {},
     order: {},
   };
+  componentDidMount() {
+    // first reinstate our localStorage
+    this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+      context: this,
+      state: "fishes",
+    });
+  }
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
   addFish = (fish) => {
     // 1. Take a copy of the existing state
     const fishes = { ...this.state.fishes };
