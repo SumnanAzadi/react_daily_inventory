@@ -14,10 +14,25 @@ class App extends React.Component {
   };
   componentDidMount() {
     // first reinstate our localStorage
+    const localStorageRef = localStorage.getItem(
+      this.props.match.params.storeId
+    );
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
+    //reinstate our firebase
     this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
       context: this,
       state: "fishes",
     });
+  }
+  componentDidUpdate() {
+    //set value to local storage (key,item)
+    //to convert object value to string we use "JSON.stringify()"
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    );
   }
   componentWillUnmount() {
     base.removeBinding(this.ref);
